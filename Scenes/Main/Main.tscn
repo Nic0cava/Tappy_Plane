@@ -89,7 +89,7 @@ horizontal_alignment = 2
 [node name="PressSpaceToPlay" type="Label" parent="MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-text = "PRESS SPACE
+text = "TAP ANYWHERE
 TO
 PLAY"
 label_settings = ExtResource("4_i3fi7")

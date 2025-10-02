@@ -18,10 +18,14 @@ func on_point_scored() -> void:
 	_score += 1
 	score.text = "%04d" % _score
 
-func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("Exit"):
+func _process(_delta: float) -> void:
+	# Exit (Escape on desktop)
+	if Input.is_action_just_pressed("exit"):
 		GameManager.load_main_scene()
-	elif press_space.visible == true and event.is_action_pressed("start"):
+		return
+
+	# Start only when the "press_space" prompt is visible
+	if press_space.visible and Input.is_action_just_pressed("start"):
 		ScoreManager.high_score = _score
 		GameManager.load_main_scene()
 

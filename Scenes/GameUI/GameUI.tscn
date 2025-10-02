@@ -47,7 +47,7 @@ offset_right = 20.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "PRESS SPACE"
+text = "TAP ANYWHERE"
 label_settings = ExtResource("2_fr8lv")
 
 [node name="GameOver" type="Label" parent="."]
