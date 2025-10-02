@@ -34,8 +34,3 @@ While the course provided the foundation, all **art, sound, and assets** were de
 - [Godot Engine](https://godotengine.org/)  
 - AI-powered tools for asset creation (art & sound)  
 - GitHub Pages for hosting  
-
----
-
-## 📸 Screenshots
-*(Optional – you can add images from your `assets/` or export some gameplay shots)*  
