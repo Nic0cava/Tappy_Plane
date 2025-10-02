@@ -1,0 +1,151 @@
+[gd_scene load_steps=18 format=3 uid="uid://cyracfmyuklv7"]
+
+[ext_resource type="Texture2D" uid="uid://df26ig5v2af45" path="res://assets/plane/Tappy_plane-Sheet.png" id="1_c1i0r"]
+[ext_resource type="Script" uid="uid://cscgm6ktp10o7" path="res://Scenes/Plane/Plane.gd" id="1_p0ear"]
+[ext_resource type="AudioStream" uid="uid://b743bl4xbom8n" path="res://assets/audio/sound_of_a_plane_eng_#2-1759350613578.mp3" id="3_kvaiv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p0ear"]
+atlas = ExtResource("1_c1i0r")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kvaiv"]
+atlas = ExtResource("1_c1i0r")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eeabi"]
+atlas = ExtResource("1_c1i0r")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_egu65"]
+atlas = ExtResource("1_c1i0r")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qpc38"]
+atlas = ExtResource("1_c1i0r")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ghnyx"]
+atlas = ExtResource("1_c1i0r")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3fyjf"]
+atlas = ExtResource("1_c1i0r")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_poxhe"]
+atlas = ExtResource("1_c1i0r")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_316oe"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p0ear")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kvaiv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eeabi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_egu65")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qpc38")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ghnyx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3fyjf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_poxhe")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 20.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c1i0r"]
+radius = 21.0
+
+[sub_resource type="Animation" id="Animation_p0ear"]
+resource_name = "jump"
+length = 0.3
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -0.8726646259971648, -0.4363323129985824]
+}
+
+[sub_resource type="Animation" id="Animation_kvaiv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_eeabi"]
+resource_name = "fall"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 1),
+"transitions": PackedFloat32Array(1, 1, 4),
+"update": 0,
+"values": [-0.4363323129985824, -0.24783674, 0.4363323129985824]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_eeabi"]
+_data = {
+&"RESET": SubResource("Animation_kvaiv"),
+&"fall": SubResource("Animation_eeabi"),
+&"jump": SubResource("Animation_p0ear")
+}
+
+[node name="Plane" type="CharacterBody2D"]
+script = ExtResource("1_p0ear")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_316oe")
+animation = &"fly"
+autoplay = "fly"
+frame_progress = 0.6561859
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, -2)
+shape = SubResource("CircleShape2D_c1i0r")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_eeabi")
+}
+
+[node name="EngineSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_kvaiv")
+volume_db = -20.0
+autoplay = true

@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://dmdvs4ca03gbh"]
+
+[ext_resource type="Script" uid="uid://jbdx7bm6gylo" path="res://Scenes/SimpleTransition/SimpleTransition.gd" id="1_cv052"]
+[ext_resource type="Texture2D" uid="uid://cavrgiqk6kmn8" path="res://assets/background/Tappy_plane_background.png" id="2_papkx"]
+[ext_resource type="LabelSettings" uid="uid://4xjygj44qpin" path="res://Resources/blue_title_48.tres" id="3_05dnv"]
+
+[node name="SimpleTransition" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cv052")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_papkx")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -111.5
+offset_top = -33.5
+offset_right = 111.5
+offset_bottom = 33.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Loading..."
+label_settings = ExtResource("3_05dnv")

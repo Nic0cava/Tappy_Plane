@@ -1,0 +1,79 @@
+[gd_scene load_steps=6 format=3 uid="uid://c5tpey5qnifhv"]
+
+[ext_resource type="Script" uid="uid://cx5miwla0bv5a" path="res://Scenes/GameUI/GameUi.gd" id="1_fr8lv"]
+[ext_resource type="LabelSettings" uid="uid://cej3nhdnu6qp8" path="res://Resources/red_title_32.tres" id="1_mq6vr"]
+[ext_resource type="LabelSettings" uid="uid://4xjygj44qpin" path="res://Resources/blue_title_48.tres" id="2_fr8lv"]
+[ext_resource type="LabelSettings" uid="uid://cadlhtgf1ta37" path="res://Resources/red_title_72.tres" id="3_yyhr2"]
+[ext_resource type="AudioStream" uid="uid://dxx0i6vc0url4" path="res://assets/audio/gem_shining,_valuabl-1758395954757.mp3" id="5_yyhr2"]
+
+[node name="GameUI" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fr8lv")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+
+[node name="Score" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "0000"
+label_settings = ExtResource("1_mq6vr")
+
+[node name="PressSpace" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "PRESS SPACE"
+label_settings = ExtResource("2_fr8lv")
+
+[node name="GameOver" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -206.5
+offset_top = -49.5
+offset_right = 206.5
+offset_bottom = 49.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "GAME OVER"
+label_settings = ExtResource("3_yyhr2")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="Sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_yyhr2")
+volume_db = -20.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

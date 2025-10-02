@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://crshk1n30vclj"]
+
+[ext_resource type="Texture2D" uid="uid://cavrgiqk6kmn8" path="res://assets/background/Tappy_plane_background.png" id="1_gokw0"]
+[ext_resource type="Texture2D" uid="uid://cwvsmo67jcypu" path="res://assets/background/Tappy_plane_background_mountains.png" id="1_lqg84"]
+
+[node name="ParallaxBg" type="Node2D"]
+
+[node name="Parallax2D2" type="Parallax2D" parent="."]
+scale = Vector2(0.56, 0.56)
+repeat_size = Vector2(2750, 0)
+autoscroll = Vector2(-40, 0)
+
+[node name="Rocks2" type="Sprite2D" parent="Parallax2D2"]
+texture = ExtResource("1_gokw0")
+centered = false
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+scale = Vector2(0.56, 0.56)
+repeat_size = Vector2(2750, 0)
+autoscroll = Vector2(-60, 0)
+
+[node name="Rocks" type="Sprite2D" parent="Parallax2D"]
+texture = ExtResource("1_lqg84")
+centered = false

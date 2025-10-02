@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=3 uid="uid://bwf4dqilj5ml4"]
+
+[ext_resource type="Texture2D" uid="uid://cwvsmo67jcypu" path="res://assets/background/Tappy_plane_background_mountains.png" id="1_rdw05"]
+[ext_resource type="Texture2D" uid="uid://cavrgiqk6kmn8" path="res://assets/background/Tappy_plane_background.png" id="1_xbxml"]
+[ext_resource type="Script" uid="uid://cekne8ebmrbs1" path="res://Scenes/Game/Game.gd" id="1_y3kpf"]
+[ext_resource type="PackedScene" uid="uid://crshk1n30vclj" path="res://Scenes/ParallaxBg/ParallaxBg.tscn" id="2_gvja8"]
+[ext_resource type="PackedScene" uid="uid://cyracfmyuklv7" path="res://Scenes/Plane/Plane.tscn" id="3_ln2h6"]
+[ext_resource type="PackedScene" uid="uid://depnyog2451fn" path="res://Scenes/Barrier/Barrier.tscn" id="4_ln2h6"]
+[ext_resource type="PackedScene" uid="uid://c5tpey5qnifhv" path="res://Scenes/GameUI/GameUI.tscn" id="6_3k6gv"]
+[ext_resource type="AudioStream" uid="uid://sbi4fcbihcql" path="res://assets/audio/Tappy_Plane_Skyward_Drift.mp3" id="7_1q8bt"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_y3kpf")
+
+[node name="ParallaxBg" parent="." instance=ExtResource("2_gvja8")]
+
+[node name="TappyPlaneBackground" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(362, 1548.0001)
+scale = Vector2(0.7643552, 0.8136262)
+texture = ExtResource("1_xbxml")
+
+[node name="TappyPlaneBackgroundMountains" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(271, 461.99994)
+scale = Vector2(0.4849343, 0.514644)
+texture = ExtResource("1_rdw05")
+
+[node name="Plane" parent="." instance=ExtResource("3_ln2h6")]
+position = Vector2(50, 343)
+
+[node name="Barrier" parent="." instance=ExtResource("4_ln2h6")]
+
+[node name="PipesHolder" type="Node" parent="."]
+
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 1.5
+autostart = true
+
+[node name="UpperPoint" type="Marker2D" parent="."]
+position = Vector2(503, 286)
+
+[node name="LowerPoint" type="Marker2D" parent="."]
+position = Vector2(505, 493)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="GameUI" parent="CanvasLayer" instance=ExtResource("6_3k6gv")]
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_1q8bt")
+volume_db = -10.0
+autoplay = true
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
+
+[editable path="CanvasLayer/GameUI"]
