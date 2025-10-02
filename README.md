@@ -38,7 +38,7 @@ While the course provided the foundation, all **art, sound, and assets** were de
 ---
 
 ## 📸 Screenshots
-<img width="1008" height="1788" alt="tappy_screenshot_2" src="https://github.com/user-attachments/assets/bf53160d-ff88-4e33-8427-e1a35ba67c8d" />
-<img width="1005" height="1785" alt="tappy_screenshot_1" src="https://github.com/user-attachments/assets/6c461e38-4e9e-4c10-9bf4-98b9102670aa" />
+<img width="504" height="894" alt="tappy_screenshot_2" src="https://github.com/user-attachments/assets/bf53160d-ff88-4e33-8427-e1a35ba67c8d" />
+<img width="502" height="892" alt="tappy_screenshot_1" src="https://github.com/user-attachments/assets/6c461e38-4e9e-4c10-9bf4-98b9102670aa" />
 
 
